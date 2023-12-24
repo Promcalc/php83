@@ -55,5 +55,5 @@ jobs:
         with:
           context: "{{defaultContext}}"
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/php83:${{ DOCKER_METADATA_OUTPUT_VERSION }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/php83:${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
           labels: ${{ steps.meta.outputs.labels }}
