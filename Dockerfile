@@ -20,13 +20,12 @@ RUN apt-get update \
    && locale-gen \
    && apt-get clean \
    && rm -rf /var/lib/apt/lists/* \
-   && mkdir -p --mode=777 /tmp/xdebug
+   && mkdir -p --mode=777 /tmp/xdebug \
+   && wget https://getcomposer.org/installer -O - -q \
+    | php -- --install-dir=/bin --filename=composer --quiet
 
 ADD ./php.ini /usr/local/etc/php/php.ini
 ADD ./xdebug-debug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
-RUN wget https://getcomposer.org/installer -O - -q \
-    | php -- --install-dir=/bin --filename=composer --quiet
 
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_EN:en
