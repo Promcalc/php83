@@ -49,8 +49,7 @@ jobs:
         with:
           push: true
           tags: |
-            user/app:latest
-            ${{ secrets.DOCKER_USERNAME }}/php83:${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            ${{ secrets.DOCKER_USERNAME }}/php83:latest
 
 #    steps:
 #      - name: Check out the repo
